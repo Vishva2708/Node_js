@@ -1,8 +1,9 @@
 const express=require('express')
+const { Next } = require('react-bootstrap/esm/PageItem')
 const app=express()
 app.set('view engine','ejs')
-app.use(express.urlencoded())
-app.use(express.static(_dirname+"/public"))
+// app.use(express.urlencoded())
+app.use(express.static(__dirname+"/public"))
  var student=[{
     id:1,
     name:'vishu'
@@ -12,9 +13,17 @@ app.use(express.static(_dirname+"/public"))
     name:'teju'
  }
 ]
+const middleware=((req,res,next)=>{
+    if(req.query.age>=18){
+        next()
+    }
+})
 app.get("/",(req,res)=>{
     // res.send("home")
     res.render('home',{student})
+})
+app.get("/contact",middleware,(req,res)=>{
+    res.render("contact")
 })
 app.get("/delete",(req,res)=>{
     const id=req.query.id
@@ -45,6 +54,7 @@ app.post("/insertdata",(req,res)=>{
     student.push(obj)
     res.redirect("/")
 })
-app.listen(4000,()=>{
+app.use(middleware)
+app.listen(4005,()=>{
     console.log('server listen')
 })

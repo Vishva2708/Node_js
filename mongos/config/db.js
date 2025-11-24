@@ -8,4 +8,4 @@ db.on("connected",(err,data)=>{
     }else{
         console.log('database connect')
     }
-})
+}) 
