@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/bookdata" method="post">
+        <input type="text" name="bookname" placeholder="Book name">
+        <input type="text" name="author" placeholder="Author name">
+        <input type="text" name="category" placeholder="Category name">
+        <input type="number" name="price" placeholder="Price">
+        <input type="submit">
+    </form>
+    <table border="1">
+        <tr>
+            <th>Bookname:</th>
+            <th>Author:</th>
+            <th>Category:</th>
+            <th>Price:</th>
+            <th>Action:</th>
+        </tr>
+        <% data.map((el,i)=>{%>
+            <tr>
+                <td><%=el.bookname%></td>
+                <td><%=el.author%></td>
+                <td><%=el.category%></td>
+                <td><%=el.price%></td>
+                <td><a href="/delete?id=<%= el._id %>">Delete</a></td>
+                <td><a href="/edit?id=<%= el._id %>">Edit</a></td>
+            </tr>
+        <%})%>
+    </table>
+</body>
+</html>
