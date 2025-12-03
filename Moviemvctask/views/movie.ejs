@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Movie Mvc Task</h2>
+    <form action="/movii/movies" method="post">
+      <input type="text" name="title" placeholder="Movie Title" />
+      <input type="text" name="genre" placeholder="Genre" />
+      <input type="number" name="year" placeholder="Year" />
+      <input type="text" name="description" placeholder="Description" />
+      <input type="submit" />
+    </form>
+
+    <table border="1">
+      <% data.forEach((el)=>{ %>
+      <tr>
+        <td><%= el.title %></td>
+        <td><%= el.genre %></td>
+        <td><%= el.year %></td>
+        <td><%= el.description %></td>
+        <td><a href="/movii/edit?id=<%= el._id %>">Edit</a></td>
+        <td><a href="/movii/delete?id=<%= el._id %>">Delete</a></td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
