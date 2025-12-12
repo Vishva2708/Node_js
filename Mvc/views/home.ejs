@@ -6,10 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/data" method="post">
+    <form action="/user/register" method="post">
         <input type="text" name="username" placeholder="username">
         <input type="text" name="password" placeholder="password">
         <input type="submit">
     </form>
+    
+    <table border="1">
+    <% data.forEach((el)=>{ %>
+        <tr>
+            <td><%= el.username %></td>
+            <td><%= el.password %></td>
+        </tr>
+    <% }) %>
+</table>
+
 </body>
 </html>
