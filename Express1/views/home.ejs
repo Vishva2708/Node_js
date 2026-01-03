@@ -7,23 +7,7 @@
 </head>
 <body>
     <form action="/data" method="post">
-        <input type="text" name="id" placeholder="id" readonly>
-         <input type="text" name="name" placeholder="name">
-         <input type="submit">
+        <input type="text" name="id" placeholder="">
     </form>
-    <table border="1">
-        <tr>
-            <th>Id:</th>
-            <th>Name:</th>
-        </tr>
-        <% student.map((el,i)=>{%>
-            <tr>
-                <td><%=el.id%></td>
-                <td><%=el.name%></td>
-                <td><a href="/delete?id=<%=el.id%>">Delete</a></td>
-                <td><a href="/edit?id=<%=el.id%>">Edit</a></td>
-            </tr>
-            <%})%>
-        </table>
 </body>
 </html>

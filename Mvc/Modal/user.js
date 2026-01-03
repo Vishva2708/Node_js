@@ -6,6 +6,9 @@ const userschema=mongoose.Schema({
     },
     password:{
         type:String
+    },
+    email:{
+        type:String
     }
 })
 const usermodal=mongoose.model("user",userschema)

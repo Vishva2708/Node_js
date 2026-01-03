@@ -1,5 +1,5 @@
 const user = require("../modal/userM")
-
+const nodemailer=require("nodemailer")
 const register=async(req,res)=>{
    const data= await user.create(req.body)
     res.send(data)
@@ -16,6 +16,9 @@ const Login=async(req,res)=>{
      }
      else if(data.password != password){
         return res.send("password not match")
+     }
+     else if(data.email != email){
+        return res.send("email not match")
      }
      res.send("success")
 }

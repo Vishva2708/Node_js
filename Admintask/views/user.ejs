@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/userdata/register" method="post">
+        <input type="text" name="username" placeholder="enter username" >
+        <input type="text" name="password" placeholder="enter password" >
+        <input type="submit">
+    </form>
+    
+    <table border="1">
+        <tr>
+            <th>Username:</th>
+            <th>password:</th>
+        </tr>
+        <% data.map((el,i)=>{%>
+            <tr>
+                <td><%=el.username%></td>
+                <td><%=el.password%></td>
+            </tr>
+       <% })%>
+    </table>
+</body>
+</html>

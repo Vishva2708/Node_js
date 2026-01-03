@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form
+      action="/products/insertdata"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="text" name="title" placeholder="enter the title" />
+      <input type="text" name="price" placeholder="enter the price" />
+      <!-- <input type="text" name="category" placeholder="enter the category" /> -->
+      <select name="categoryId" required>
+        <option value="">Select Category</option>
+        <% category.forEach(cats=> { %>
+        <option value="<%= cats._id %>"><%= cats.title %></option>
+        <% }) %>
+      </select>
+      <input type="text" name="brand" placeholder="enter the brand" />
+      <input type="file" name="image" placeholder="Enter image url" />
+      <input type="submit" />
+    </form>
+
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>category</th>
+        <th>Brand</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+      <% user.map((el,i)=>{%>
+      <tr>
+        <td><%= el.title %></td>
+        <td><%= el.price %></td>
+        <td>
+         <a href="/products/category/<%= el.categoryId?._id %>">
+            <%= el.title %>
+          </a>
+        </td>
+        <td><%= el.brand %></td>
+        <td>
+          <% if(el.image){ %>
+          <img src="/<%= el.image %>" width="80" />
+          <% } %>
+        </td>
+        <td>
+          <a href="/products/delete/<%= el._id %>"> Delete </a>
+        </td>
+        <td>
+          <a href="/products/edit/<%= el._id %>">Edit</a>
+        </td>
+      </tr>
+      <%})%>
+    </table>
+  </body>
+</html>

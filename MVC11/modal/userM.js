@@ -6,6 +6,9 @@ const userModel = mongoose.Schema({
   },
   password: {
     type: String,
+  },
+  email:{
+    type:String
   }
 });
 

@@ -8,7 +8,6 @@ const appget = async (req, res) => {
   const data = await usermodal.find({});
   res.render("home", { data });
 };
-
 const local=(req,res)=>{
     return res.render("success")
 }
