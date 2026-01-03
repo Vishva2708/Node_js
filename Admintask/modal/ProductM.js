@@ -16,8 +16,12 @@ const pro=mongoose.Schema({
         type:String
     },
      categoryId: {
-        type: mongoose.Schema.Types.String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "category"
+    },
+    subCategoryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "subcategory"
     }
 })
 const products=mongoose.model("product",pro)

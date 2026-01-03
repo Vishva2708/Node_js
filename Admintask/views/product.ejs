@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Product</title>
   </head>
   <body>
     <form
@@ -11,52 +11,67 @@
       method="post"
       enctype="multipart/form-data"
     >
-      <input type="text" name="title" placeholder="enter the title" />
-      <input type="text" name="price" placeholder="enter the price" />
-      <!-- <input type="text" name="category" placeholder="enter the category" /> -->
+      <input type="text" name="title" placeholder="enter the title" required />
+      <input type="text" name="price" placeholder="enter the price" required />
+
       <select name="categoryId" required>
         <option value="">Select Category</option>
-        <% category.forEach(cats=> { %>
+        <% category.forEach(cats => { %>
         <option value="<%= cats._id %>"><%= cats.title %></option>
         <% }) %>
       </select>
-      <input type="text" name="brand" placeholder="enter the brand" />
-      <input type="file" name="image" placeholder="Enter image url" />
+
+      <select name="subCategoryId" required>
+        <option value="">Select Sub Category</option>
+        <% subcat.forEach(sc => { %>
+        <option value="<%= sc._id %>"><%= sc.title %></option>
+        <% }) %>
+      </select>
+
+      <input type="text" name="brand" placeholder="enter the brand" required />
+      <input type="file" name="image" />
       <input type="submit" />
     </form>
 
-    <table border="1">
+    <br /><br />
+
+    <table border="1" cellpadding="8">
       <tr>
         <th>Title</th>
         <th>Price</th>
-        <th>category</th>
+        <th>Category</th>
+        <th>subcategory</th>
         <th>Brand</th>
         <th>Image</th>
-        <th>Action</th>
+        <th colspan="2">Action</th>
       </tr>
-      <% user.map((el,i)=>{%>
+
+      <% user.forEach(el => { %>
       <tr>
         <td><%= el.title %></td>
         <td><%= el.price %></td>
-        <td>
-         <a href="/products/category/<%= el.categoryId?._id %>">
-            <%= el.title %>
-          </a>
-        </td>
+
+        <td><%= el.categoryId ? el.categoryId.title : "" %></td>
+
+        <td><%= el.subCategoryId ? el.subCategoryId.title : "" %></td>
+
         <td><%= el.brand %></td>
+
         <td>
           <% if(el.image){ %>
           <img src="/<%= el.image %>" width="80" />
           <% } %>
         </td>
+
         <td>
-          <a href="/products/delete/<%= el._id %>"> Delete </a>
+          <a href="/products/delete/<%= el._id %>">Delete</a>
         </td>
+
         <td>
           <a href="/products/edit/<%= el._id %>">Edit</a>
         </td>
       </tr>
-      <%})%>
+      <% }) %>
     </table>
   </body>
 </html>
